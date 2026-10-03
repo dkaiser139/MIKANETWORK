@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mika Network | Servicios Digitales y Conectividad</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#fffbeb',
+                            100: '#fef3c7',
+                            200: '#fde68a',
+                            300: '#fcd34d',
+                            400: '#fbbf24',
+                            500: '#f59e0b', /* Primary Warm Orange/Amber */
+                            600: '#d97706',
+                            700: '#b45309',
+                            800: '#92400e',
+                            900: '#78350f',
+                        },
+                        dark: {
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            800: '#1e293b',
+                            900: '#0f172a',
+                            950: '#090d16',
+                        },
+                        warmbg: '#faf8f5',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(251, 191, 36, 0.2);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #d97706 0%, #78350f 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero-bg {
+            background: radial-gradient(circle at 80% 20%, rgba(251, 191, 36, 0.15) 0%, rgba(250, 248, 245, 1) 70%);
+        }
+    </style>
+</head>
+<body class="bg-warmbg text-dark-900 font-sans antialiased selection:bg-brand-500 selection:text-white">
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-brand-100 transition-all shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#inicio" class="flex items-center gap-3 group">
+                <div class="relative w-12 h-12 rounded-full bg-gradient-to-tr from-brand-500 to-brand-300 p-0.5 shadow-md transition-transform group-hover:scale-105">
+                    <div class="w-full h-full bg-white rounded-full flex items-center justify-center overflow-hidden">
+                        <!-- SVG Logo representation inspired by Mika Network logo -->
+                        <svg class="w-8 h-8 text-brand-600" viewBox="0 0 100 100" fill="currentColor">
+                            <!-- Cat silhouette ensemble motif with wifi signal arches -->
+                            <path d="M50 15 C30 15 15 30 15 50 C15 70 30 85 50 85 C70 85 85 70 85 50 C85 30 70 15 50 15 Z" fill="none" stroke="#f59e0b" stroke-width="4" stroke-dasharray="1 3"/>
+                            <path d="M30 35 Q50 20 70 35" fill="none" stroke="#d97706" stroke-width="4" stroke-linecap="round"/>
+                            <!-- Cat ears / stylized geometry -->
+                            <path d="M28 55 L35 40 L44 48 L48 42 L52 42 L56 48 L65 40 L72 55 Z" fill="#2d3748"/>
+                            <circle cx="38" cy="54" r="2.5" fill="#10b981"/>
+                            <circle cx="62" cy="54" r="2.5" fill="#10b981"/>
+                            <circle cx="50" cy="50" r="2.5" fill="#f59e0b"/>
+                        </svg>
+                    </div>
+                </div>
+                <div>
+                    <span class="text-xl font-extrabold tracking-tight text-dark-900 block leading-none">Mika <span class="text-brand-600">network</span></span>
+                    <span class="text-[10px] font-semibold tracking-wider text-gray-500 uppercase block mt-1">Servicios Digitales y Conectividad</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-semibold text-gray-700">
+                <a href="#inicio" class="hover:text-brand-600 transition-colors">Inicio</a>
+                <a href="#servicios" class="hover:text-brand-600 transition-colors">Servicios</a>
+                <a href="#cobertura" class="hover:text-brand-600 transition-colors">Cobertura</a>
+                <a href="#nosotros" class="hover:text-brand-600 transition-colors">Nosotros</a>
+                <a href="#cotizar" class="hover:text-brand-600 transition-colors">Cotizar</a>
+            </nav>
+
+            <!-- WhatsApp Direct CTA Header Button -->
+            <div class="hidden sm:flex items-center gap-3">
+                <a href="https://wa.me/528119156551?text=Hola%20Mika%20Network,%20me%20gustar%C3%ADa%20recibir%20informaci%C3%B3n%20sobre%20sus%20servicios." target="_blank" rel="noopener noreferrer" 
+                   class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-5 py-2.5 rounded-full shadow-md hover:shadow-lg transition-all duration-200 transform hover:-translate-y-0.5">
+                    <i data-lucide="message-circle" class="w-5 h-5 fill-current"></i>
+                    <span>Contactar WhatsApp</span>
+                </a>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-gray-700 hover:bg-brand-50 focus:outline-none">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-200 px-4 pt-2 pb-6 space-y-3">
+            <a href="#inicio" class="block py-2 text-base font-medium text-gray-700 hover:text-brand-600">Inicio</a>
+            <a href="#servicios" class="block py-2 text-base font-medium text-gray-700 hover:text-brand-600">Servicios</a>
+            <a href="#cobertura" class="block py-2 text-base font-medium text-gray-700 hover:text-brand-600">Cobertura</a>
+            <a href="#nosotros" class="block py-2 text-base font-medium text-gray-700 hover:text-brand-600">Nosotros</a>
+            <a href="#cotizar" class="block py-2 text-base font-medium text-gray-700 hover:text-brand-600">Cotizar Servicio</a>
+            <a href="https://wa.me/528119156551?text=Hola%20Mika%20Network,%20deseo%20m%C3%A1s%20informaci%C3%B3n." target="_blank" class="w-full mt-2 inline-flex justify-center items-center gap-2 bg-emerald-600 text-white font-semibold py-3 rounded-xl shadow">
+                <i data-lucide="message-circle" class="w-5 h-5"></i>
+                Escribir a WhatsApp
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero-bg py-16 md:py-24 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-100 text-brand-800 text-xs font-bold uppercase tracking-wider">
+                        <i data-lucide="wifi" class="w-4 h-4 text-brand-600"></i> Conexión Veloz, Estable y Hogareña
+                    </div>
+                    
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-dark-900 tracking-tight leading-none">
+                        Conectividad Inteligente y <span class="gradient-text">Servicios Digitales</span> a tu Alcance
+                    </h1>
+                    
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                        En <strong>Mika Network</strong> combinamos la máxima potencia tecnológica en Fibra Óptica, Wi-Fi Mesh, Cableado y Cámaras de Seguridad con la calidez y atención cercana que tu hogar y negocio merecen.
+                    </p>
+
+                    <!-- Quick CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                        <a href="#cotizar" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-brand-500 hover:bg-brand-600 text-white text-lg font-bold px-8 py-4 rounded-xl shadow-lg shadow-brand-500/30 hover:shadow-brand-500/50 transition-all duration-200 transform hover:-translate-y-0.5">
+                            <i data-lucide="send" class="w-5 h-5"></i>
+                            Cotizar por WhatsApp
+                        </a>
+                        <a href="#servicios" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white hover:bg-gray-50 text-dark-800 border border-gray-200 text-lg font-semibold px-6 py-4 rounded-xl shadow-sm transition-all">
+                            Ver Soluciones
+                            <i data-lucide="chevron-right" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+
+                    <!-- Key Trust Highlights -->
+                    <div class="pt-8 border-t border-brand-200/60 grid grid-cols-3 gap-4 text-center lg:text-left">
+                        <div>
+                            <p class="text-2xl font-black text-brand-600">99.9%</p>
+                            <p class="text-xs text-gray-500 font-medium">Uptime Estable</p>
+                        </div>
+                        <div>
+                            <p class="text-2xl font-black text-brand-600">24 / 7</p>
+                            <p class="text-xs text-gray-500 font-medium">Soporte Dedicado</p>
+                        </div>
+                        <div>
+                            <p class="text-2xl font-black text-brand-600">100%</p>
+                            <p class="text-xs text-gray-500 font-medium">Garantía Digital</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mascot & Visual Feature Card -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative w-full max-w-md">
+                        <!-- Background Accent Ring -->
+                        <div class="absolute -inset-4 bg-gradient-to-r from-brand-300 to-amber-500 rounded-3xl opacity-30 blur-2xl animate-pulse"></div>
+                        
+                        <div class="relative bg-white p-6 sm:p-8 rounded-3xl shadow-2xl border border-brand-100 text-center">
+                            <!-- Mascot Representation Badge -->
+                            <div class="w-32 h-32 mx-auto mb-6 bg-gradient-to-br from-brand-100 to-brand-200 rounded-full flex items-center justify-center border-4 border-white shadow-inner relative">
+                                <i data-lucide="shield-check" class="w-16 h-16 text-brand-600"></i>
+                                <span class="absolute -bottom-2 bg-dark-900 text-brand-400 text-xs font-bold px-3 py-1 rounded-full border border-brand-500">
+                                    Red Segura
+                                </span>
+                            </div>
+
+                            <h3 class="text-2xl font-bold text-dark-900 mb-2">Mika Network</h3>
+                            <p class="text-sm text-gray-500 mb-6">Tu red doméstica y empresarial con la confianza y cercanía de siempre.</p>
+
+                            <div class="space-y-3 text-left">
+                                <div class="flex items-center gap-3 p-3 bg-brand-50/70 rounded-xl border border-brand-100">
+                                    <div class="p-2 bg-brand-500 text-white rounded-lg"><i data-lucide="zap" class="w-5 h-5"></i></div>
+                                    <div>
+                                        <p class="text-xs font-bold text-dark-900">Velocidad Simétrica</p>
+                                        <p class="text-xs text-gray-500">Navegación ultra rápida sin interrupciones</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-3 p-3 bg-emerald-50/70 rounded-xl border border-emerald-100">
+                                    <div class="p-2 bg-emerald-600 text-white rounded-lg"><i data-lucide="headphones" class="w-5 h-5"></i></div>
+                                    <div>
+                                        <p class="text-xs font-bold text-dark-900">Atención Personalizada</p>
+                                        <p class="text-xs text-gray-500">Respuesta directa en tu WhatsApp</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicios" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-bold text-brand-600 uppercase tracking-widest mb-2">Nuestras Soluciones</h2>
+                <p class="text-3xl sm:text-4xl font-extrabold text-dark-900">Servicios Diseñados para Mantenerte Siempre Conectado</p>
+                <p class="text-gray-600 mt-4 text-base">Cubrimos todas las necesidades digitales para tu casa, departamento u oficina con el respaldo de los mejores equipos del mercado.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                
+                <!-- Service 1 -->
+                <div class="group bg-warmbg hover:bg-white p-8 rounded-2xl border border-gray-100 hover:border-brand-300 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 bg-brand-100 text-brand-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                            <i data-lucide="wifi" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-dark-900 mb-3">Internet de Alta Velocidad</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                            Instalación y optimización de Fibra Óptica, configuración de sistemas Wi-Fi Mesh para eliminar zonas muertas.
+                        </p>
+                    </div>
+                    <a href="#cotizar" onclick="selectService('Internet de Alta Velocidad (Fibra Óptica / Wi-Fi Mesh)')" class="inline-flex items-center text-sm font-bold text-brand-600 hover:text-brand-700 gap-1 group-hover:gap-2 transition-all">
+                        Solicitar servicio <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="group bg-warmbg hover:bg-white p-8 rounded-2xl border border-gray-100 hover:border-brand-300 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 bg-amber-100 text-amber-700 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                            <i data-lucide="network" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-dark-900 mb-3">Redes y Cableado</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                            Cableado estructurado de categoría superior, switches, routers de alto rendimiento y orden de bastidores o racks.
+                        </p>
+                    </div>
+                    <a href="#cotizar" onclick="selectService('Redes e Instalación de Cableado Estructurado')" class="inline-flex items-center text-sm font-bold text-brand-600 hover:text-brand-700 gap-1 group-hover:gap-2 transition-all">
+                        Solicitar servicio <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="group bg-warmbg hover:bg-white p-8 rounded-2xl border border-gray-100 hover:border-brand-300 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                            <i data-lucide="video" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-dark-900 mb-3">Seguridad y Videovigilancia</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                            Sistemas de cámaras IP y CCTV con monitoreo directo en tu teléfono inteligente en tiempo real y visión nocturna.
+                        </p>
+                    </div>
+                    <a href="#cotizar" onclick="selectService('Seguridad y Videovigilancia (Cámaras IP / CCTV)')" class="inline-flex items-center text-sm font-bold text-brand-600 hover:text-brand-700 gap-1 group-hover:gap-2 transition-all">
+                        Solicitar servicio <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="group bg-warmbg hover:bg-white p-8 rounded-2xl border border-gray-100 hover:border-brand-300 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                            <i data-lucide="wrench" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-dark-900 mb-3">Soporte Técnico Especializado</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                            Mantenimiento preventivo y correctivo de equipos informáticos, diagnóstico de red y resolución rápida de fallas.
+                        </p>
+                    </div>
+                    <a href="#cotizar" onclick="selectService('Soporte Técnico y Mantenimiento')" class="inline-flex items-center text-sm font-bold text-brand-600 hover:text-brand-700 gap-1 group-hover:gap-2 transition-all">
+                        Solicitar servicio <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- WhatsApp Match / Dynamic Link Generator Section -->
+    <section id="cotizar" class="py-20 bg-gradient-to-b from-warmbg to-brand-50/50 relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-3xl shadow-xl border border-brand-200/80 p-8 sm:p-12 relative overflow-hidden">
+                <!-- Decorative Corner Badge -->
+                <div class="absolute top-0 right-0 bg-brand-500 text-white font-bold text-xs uppercase px-6 py-2 rounded-bl-2xl">
+                    Cotización Inmediata
+                </div>
+
+                <div class="text-center max-w-xl mx-auto mb-10">
+                    <div class="inline-flex p-3 bg-emerald-100 text-emerald-600 rounded-full mb-3">
+                        <i data-lucide="message-square" class="w-8 h-8"></i>
+                    </div>
+                    <h2 class="text-3xl font-extrabold text-dark-900">Haz Match con Mika Network en WhatsApp</h2>
+                    <p class="text-gray-600 text-sm mt-2">Completa el formulario y generaremos automáticamente tu mensaje personalizado para enviarlo directamente a nuestro chat de atención.</p>
+                </div>
+
+                <form id="whatsappForm" class="space-y-6" onsubmit="event.preventDefault(); sendToWhatsApp();">
+                    <div class="grid sm:grid-cols-2 gap-6">
+                        <!-- User Name -->
+                        <div>
+                            <label class="block text-sm font-bold text-dark-800 mb-2">Tu Nombre Completo *</label>
+                            <input type="text" id="userName" required placeholder="Ej. Carlos Mendoza" 
+                                   class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition-all">
+                        </div>
+
+                        <!-- Phone Number Optional -->
+                        <div>
+                            <label class="block text-sm font-bold text-dark-800 mb-2">Teléfono de Contacto</label>
+                            <input type="tel" id="userPhone" placeholder="Ej. +52 81 1234 5678" 
+                                   class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition-all">
+                        </div>
+                    </div>
+
+                    <div class="grid sm:grid-cols-2 gap-6">
+                        <!-- Service Selection -->
+                        <div>
+                            <label class="block text-sm font-bold text-dark-800 mb-2">Servicio de Interés *</label>
+                            <select id="userService" required class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition-all bg-white">
+                                <option value="">-- Selecciona un servicio --</option>
+                                <option value="Internet de Alta Velocidad (Fibra Óptica / Wi-Fi Mesh)">Internet de Alta Velocidad / Mesh</option>
+                                <option value="Redes e Instalación de Cableado Estructurado">Redes e Instalación de Cableado</option>
+                                <option value="Seguridad y Videovigilancia (Cámaras IP / CCTV)">Cámaras de Seguridad IP / CCTV</option>
+                                <option value="Soporte Técnico y Mantenimiento">Soporte Técnico y Mantenimiento</option>
+                                <option value="Paquete Integral (Internet + Cámaras + Soporte)">Paquete Integral Completo</option>
+                            </select>
+                        </div>
+
+                        <!-- Location / Zone -->
+                        <div>
+                            <label class="block text-sm font-bold text-dark-800 mb-2">Ubicación / Colonia *</label>
+                            <input type="text" id="userLocation" required placeholder="Ej. Col. Centro, Sector 3" 
+                                   class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition-all">
+                        </div>
+                    </div>
+
+                    <!-- Custom Details -->
+                    <div>
+                        <label class="block text-sm font-bold text-dark-800 mb-2">Detalles Adicionales o Mensaje</label>
+                        <textarea id="userMessage" rows="3" placeholder="Detalla brevemente qué necesitas (ej. cuántas cámaras deseas instalar, metros cuadrados de la casa, etc.)" 
+                                  class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition-all resize-none"></textarea>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-4 px-6 rounded-xl shadow-lg shadow-emerald-600/30 hover:shadow-emerald-600/50 transition-all flex items-center justify-center gap-3 text-lg">
+                        <i data-lucide="send" class="w-6 h-6"></i>
+                        <span>Enviar Solicitud a WhatsApp</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section id="nosotros" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                
+                <div>
+                    <h2 class="text-xs font-bold text-brand-600 uppercase tracking-widest mb-2">¿Por qué Mika Network?</h2>
+                    <h3 class="text-3xl sm:text-4xl font-extrabold text-dark-900 mb-6">La combinación perfecta entre calidez y alta tecnología</h3>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="p-3 bg-brand-100 text-brand-700 rounded-xl mt-1">
+                                <i data-lucide="shield-check" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-dark-900">Atención Personal y Transparente</h4>
+                                <p class="text-sm text-gray-600 mt-1">Tratas directamente con técnicos expertos listos para ayudarte en cualquier instante.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="p-3 bg-brand-100 text-brand-700 rounded-xl mt-1">
+                                <i data-lucide="cpu" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-dark-900">Equipos de Última Generación</h4>
+                                <p class="text-sm text-gray-600 mt-1">Rutas óptimas, cableado certificado y sistemas Wi-Fi 6 de máxima cobertura.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="p-3 bg-brand-100 text-brand-700 rounded-xl mt-1">
+                                <i data-lucide="clock" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-dark-900">Respuesta Inmediata</h4>
+                                <p class="text-sm text-gray-600 mt-1">Olvídate de las esperas infinitas en conmutadores automáticos. Te atendemos por WhatsApp.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial Banner -->
+                <div class="bg-warmbg p-8 sm:p-10 rounded-3xl border border-brand-200 space-y-6">
+                    <div class="flex items-center gap-1 text-brand-500">
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                    </div>
+                    <blockquote class="text-lg text-dark-800 italic font-medium leading-relaxed">
+                        "En Mika Network no solo nos instalaron el internet y las cámaras en la casa, sino que optimizaron toda la señal Wi-Fi. Ahora trabajamos sin interrupciones y la atención por WhatsApp es excelente."
+                    </blockquote>
+                    <div class="flex items-center gap-3 pt-2">
+                        <div class="w-10 h-10 bg-brand-500 text-white rounded-full flex items-center justify-center font-bold">
+                            R
+                        </div>
+                        <div>
+                            <p class="font-bold text-dark-900 text-sm">Roberto & Familia</p>
+                            <p class="text-xs text-gray-500">Clientes Satisfechos</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-dark-950 text-white py-12 border-t border-dark-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="text-2xl font-black text-white">Mika <span class="text-brand-500">network</span></span>
+                    </div>
+                    <p class="text-gray-400 text-sm">Servicios Digitales y Conectividad. Tu tranquilidad y velocidad en un solo lugar.</p>
+                </div>
+
+                <div>
+                    <h4 class="text-sm font-bold uppercase tracking-wider text-brand-400 mb-4">Enlaces Rápidos</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#inicio" class="hover:text-white transition">Inicio</a></li>
+                        <li><a href="#servicios" class="hover:text-white transition">Nuestros Servicios</a></li>
+                        <li><a href="#cotizar" class="hover:text-white transition">Cotizar por WhatsApp</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-sm font-bold uppercase tracking-wider text-brand-400 mb-4">Contacto Directo</h4>
+                    <p class="text-sm text-gray-400 mb-2">¿Tienes alguna duda rápida?</p>
+                    <a href="https://wa.me/528119156551?text=Hola%20Mika%20Network,%20tengo%20una%20consulta." target="_blank" class="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 font-semibold text-sm">
+                        <i data-lucide="message-circle" class="w-4 h-4"></i> Enviar Mensaje en WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-dark-800 text-center text-xs text-gray-500">
+                <p>&copy; <span id="year"></span> Mika Network - Servicios Digitales y Conectividad. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Widget -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <a href="https://wa.me/528119156551?text=Hola%20Mika%20Network,%20me%20gustar%C3%ADa%20recibir%20asesor%C3%ADa%20personalizada." 
+           target="_blank" 
+           rel="noopener noreferrer"
+           aria-label="Contactar en WhatsApp"
+           class="group relative flex items-center justify-center w-14 h-14 bg-emerald-500 hover:bg-emerald-600 text-white rounded-full shadow-2xl transition-all duration-300 hover:scale-110">
+            <span class="absolute -top-1 -right-1 flex h-4 w-4">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-4 w-4 bg-emerald-300"></span>
+            </span>
+            <i data-lucide="message-circle" class="w-8 h-8 fill-current"></i>
+            <!-- Hover Tooltip -->
+            <span class="absolute right-16 bg-dark-900 text-white text-xs font-semibold px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-lg">
+                ¡Chatea con nosotros!
+            </span>
+        </a>
+    </div>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Dynamic Year Footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Function to quick-select a service from service cards
+        function selectService(serviceName) {
+            const serviceSelect = document.getElementById('userService');
+            if (serviceSelect) {
+                serviceSelect.value = serviceName;
+            }
+        }
+
+        // Send to WhatsApp Functionality with defined phone number
+        function sendToWhatsApp() {
+            const name = document.getElementById('userName').value.trim();
+            const phone = document.getElementById('userPhone').value.trim();
+            const service = document.getElementById('userService').value;
+            const location = document.getElementById('userLocation').value.trim();
+            const message = document.getElementById('userMessage').value.trim();
+
+            if (!name || !service || !location) {
+                alert('Por favor completa todos los campos requeridos (*).');
+                return;
+            }
+
+            // Construct formatted WhatsApp message
+            let text = `*NUEVA SOLICITUD DE COTIZACIÓN - MIKA NETWORK*\n\n`;
+            text += `👤 *Nombre:* ${name}\n`;
+            if (phone) text += `📞 *Teléfono:* ${phone}\n`;
+            text += `🛠️ *Servicio Requerido:* ${service}\n`;
+            text += `📍 *Ubicación / Colonia:* ${location}\n`;
+            if (message) text += `💬 *Detalles adicionales:* ${message}\n\n`;
+            text += `_Mensaje generado desde la página web de Mika Network._`;
+
+            // Encode string for URL
+            const encodedText = encodeURIComponent(text);
+            
+            // Generate WhatsApp Link pointing directly to +52 8119156551
+            const whatsappUrl = `https://wa.me/528119156551?text=${encodedText}`;
+
+            // Open in new tab
+            window.open(whatsappUrl, '_blank');
+        }
+    </script>
+</body>
+</html>
